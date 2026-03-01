@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hirelink-ingress
+  namespace: hirelink-prod
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    # Keep HTTP enabled at LB layer and force redirect with FrontendConfig.
+    kubernetes.io/ingress.allow-http: "true"
+    kubernetes.io/ingress.global-static-ip-name: "hirelink-ingress-ip"
+    networking.gke.io/pre-shared-cert: "hirelink-managed-cert"
+    networking.gke.io/v1beta1.FrontendConfig: "hirelink-frontendconfig"
+spec:
+  ingressClassName: gce
+  rules:
+    - host: app.niranjan.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hirelink-web
+                port:
+                  number: 80
+    - host: api.niranjan.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hirelink-api
+                port:
+                  number: 8000

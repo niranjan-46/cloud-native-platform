@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "hirelink-jobs-api",
+		"name": "HireLink Jobs API",
+		"description": "API collection for job posting, bidding, and applications",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "List Jobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/jobs/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs", ""],
+							"query": [
+								{
+									"key": "job_type",
+									"value": "full-time",
+									"description": "Filter by job type"
+								},
+								{
+									"key": "experience_level",
+									"value": "senior",
+									"description": "Filter by experience level"
+								},
+								{
+									"key": "work_mode",
+									"value": "remote",
+									"description": "Filter by work mode"
+								},
+								{
+									"key": "min_salary",
+									"value": "50000",
+									"description": "Filter by minimum salary"
+								},
+								{
+									"key": "max_salary",
+									"value": "100000",
+									"description": "Filter by maximum salary"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": {
+								"title": "Senior Python Developer",
+								"company_name": "Tech Corp",
+								"company_website": "https://techcorp.com",
+								"company_email": "careers@techcorp.com",
+								"location": "New York, NY",
+								"work_mode": "hybrid",
+								"job_type": "full-time",
+								"experience_level": "senior",
+								"industry": "Technology",
+								"min_salary": "80000",
+								"max_salary": "120000",
+								"currency": "USD",
+								"salary_type": "yearly",
+								"description": "We are looking for an experienced Python developer...",
+								"requirements": "5+ years of Python experience...",
+								"responsibilities": "Develop and maintain backend services...",
+								"skills_required": "Python,Django,PostgreSQL,AWS",
+								"deadline": "2024-12-31",
+								"vacancies": 2
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/jobs/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Job Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/jobs/{{job_id}}/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs", "{{job_id}}", ""]
+						}
+					}
+				},
+				{
+					"name": "Update Job",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": {
+								"title": "Updated Senior Python Developer",
+								"max_salary": "130000"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/jobs/{{job_id}}/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs", "{{job_id}}", ""]
+						}
+					}
+				},
+				{
+					"name": "Delete Job",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/jobs/{{job_id}}/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs", "{{job_id}}", ""]
+						}
+					}
+				},
+				{
+					"name": "Apply to Job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": {
+								"cover_letter": "I am excited to apply for this position..."
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/jobs/{{job_id}}/apply/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "jobs", "{{job_id}}", "apply", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Bids",
+			"item": [
+				{
+					"name": "List Bids",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/bids/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bids", ""]
+						}
+					}
+				},
+				{
+					"name": "Create Bid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": {
+								"job": "{{job_id}}",
+								"proposal": "We have several qualified candidates...",
+								"fee": "5000"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bids/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bids", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Bid Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/bids/{{bid_id}}/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bids", "{{bid_id}}", ""]
+						}
+					}
+				},
+				{
+					"name": "Approve Bid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/bids/{{bid_id}}/approve/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bids", "{{bid_id}}", "approve", ""]
+						}
+					}
+				},
+				{
+					"name": "Reject Bid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/bids/{{bid_id}}/reject/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bids", "{{bid_id}}", "reject", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Applications",
+			"item": [
+				{
+					"name": "List Applications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/applications/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "applications", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Application Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/applications/{{application_id}}/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "applications", "{{application_id}}", ""]
+						}
+					}
+				},
+				{
+					"name": "Update Application Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": {
+								"status": "shortlisted"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/applications/{{application_id}}/update_status/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "applications", "{{application_id}}", "update_status", ""]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "your_jwt_token_here",
+			"type": "string"
+		},
+		{
+			"key": "job_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "bid_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "application_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+} 

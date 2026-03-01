@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Recruitment Agreement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        .agreement-id {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin: 0;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .section-title {
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            font-weight: bold;
+            border-left: 4px solid #2c3e50;
+            margin-bottom: 15px;
+        }
+        .signature-area {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .signature-box {
+            width: 45%;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #7f8c8d;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        .highlight {
+            background-color: #fffde7;
+            padding: 2px 5px;
+            font-weight: bold;
+        }
+        .terms-list {
+            padding-left: 20px;
+        }
+        .terms-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="agreement-id">Agreement ID: {{ agreement_id }}</div>
+        <img src="https://raw.githubusercontent.com/vamsikrishna7-github/hirelink_images/refs/heads/main/android-chrome-512x512.png" alt="Zyukthi Logo" class="logo">
+        <h1>EMPLOYMENT RECRUITMENT AGREEMENT</h1>
+        <div class="subtitle">Between Employer and Consultancy</div>
+    </div>
+
+    <div class="section">
+        <p>This Employment Recruitment Agreement ("Agreement") is made and entered into as of <span class="highlight">{{ current_date }}</span> by and between:</p>
+        
+        <p><strong>{{ employer.company_name }}</strong>, a company having its principal place of business at <span class="highlight">{{ employer.address }}</span> ("Employer"),</p>
+        
+        <p>And</p>
+        
+        <p><strong>{{ consultancy.name }}</strong>, a recruitment consultancy having its principal place of business at <span class="highlight">{{ consultancy.address }}</span> ("Consultancy").</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">RECITALS</div>
+        <p>WHEREAS, Employer has posted a job opening for <span class="highlight">{{ job.title }}</span> on the Zyukthi platform;</p>
+        <p>WHEREAS, Consultancy has submitted a successful bid to assist in filling this position with qualified candidates;</p>
+        <p>WHEREAS, Employer wishes to engage Consultancy's services to identify and refer qualified candidates for the Position;</p>
+        <p>NOW, THEREFORE, in consideration of the mutual covenants contained herein, the parties agree as follows:</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">1. ENGAGEMENT</div>
+        <p>Employer hereby engages Consultancy to provide recruitment services for the Position of <span class="highlight">{{ job.title }}</span> with the following details:</p>
+        <ul>
+            <li><strong>Job Type:</strong> {{ job.get_job_type_display }}</li>
+            <li><strong>Experience Level:</strong> {{ job.get_experience_level_display }}</li>
+            <li><strong>Work Mode:</strong> {{ job.get_work_mode_display }}</li>
+            <li><strong>Location:</strong> {{ job.location }}</li>
+            <li><strong>Salary Range:</strong> {{ job.min_salary }} to {{ job.max_salary }} {{ job.currency }} ({{ job.get_salary_type_display }})</li>
+            <li><strong>Vacancies:</strong> {{ job.vacancies }}</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">2. CONSULTANCY SERVICES</div>
+        <p>Consultancy agrees to:</p>
+        <ul class="terms-list">
+            <li>Use reasonable efforts to identify and refer qualified candidates for the Position within {{ job.deadline|default:"the agreed timeline" }}.</li>
+            <li>Conduct preliminary screening of candidates to ensure they meet the minimum qualifications specified by Employer.</li>
+            <li>Provide Employer with complete and accurate information about each candidate referred.</li>
+            <li>Not refer any candidate who has already been submitted by another consultancy or directly applied to Employer for the same Position.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">3. FEES AND PAYMENT</div>
+        <p>In consideration for the services provided by Consultancy, Employer agrees to pay Consultancy a fee of <span class="highlight">{{ bid.fee }} {{ job.currency }}</span> as per the accepted bid proposal.</p>
+        <p>The fee shall be payable according to the following schedule:</p>
+        <ul class="terms-list">
+            <li>50% upon signing of this Agreement</li>
+            <li>50% upon successful placement of a candidate and completion of the probation period</li>
+        </ul>
+        <p>All payments shall be made within 15 days of invoice date.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">4. TERM AND TERMINATION</div>
+        <p>This Agreement shall commence on the Effective Date and continue until:</p>
+        <ul class="terms-list">
+            <li>The Position is filled and the probation period is completed; or</li>
+            <li>The Position is withdrawn by Employer; or</li>
+            <li>Either party terminates this Agreement with 14 days written notice.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">5. CONFIDENTIALITY</div>
+        <p>Both parties agree to maintain the confidentiality of all candidate information, business processes, and any proprietary information shared during the course of this engagement.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">6. GENERAL PROVISIONS</div>
+        <ul class="terms-list">
+            <li>This Agreement constitutes the entire understanding between the parties.</li>
+            <li>Any modifications must be in writing and signed by both parties.</li>
+            <li>This Agreement shall be governed by the laws of India.</li>
+        </ul>
+    </div>
+
+    <div class="signature-area">
+        <div class="signature-box">
+            <p><strong>Employer Acknowledgement</strong></p>
+            <p>{{ employer.company_name }}</p>
+            <p>Represented by: {{ employer.user.name }}</p>
+            <p>Accepted on Zyukthi platform</p>
+            <p>Date: {{ acceptance_date }}</p>
+        </div>
+        <div class="signature-box">
+            <p><strong>Consultancy Acknowledgement</strong></p>
+            <p>{{ consultancy.name }}</p>
+            <p>Represented by: {{ consultancy.user.name }}</p>
+            <p>Bid submitted on Zyukthi platform</p>
+            <p>Date: {{ bid.created_at|date:"F j, Y" }}</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>This agreement was digitally executed through the Hirelink platform (https://app.niranjan.cloud/)</p>
+        <p>Agreement ID: {{ agreement_id }} | Reference: BID-{{ bid.id }}</p>
+        <p>By accepting the bid proposal, the Employer agrees to be bound by these terms.</p>
+        <p>By submitting the bid, the Consultancy agrees to be bound by these terms.</p>
+    </div>
+</body>
+</html>

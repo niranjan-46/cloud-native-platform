@@ -1,0 +1,36 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: hirelink-alert-rules
+  namespace: observability
+  labels:
+    release: kube-prom-stack
+spec:
+  groups:
+    - name: hirelink-k8s-alerts
+      rules:
+        - alert: HirelinkPodFrequentRestarts
+          expr: increase(kube_pod_container_status_restarts_total{namespace="hirelink-prod"}[15m]) > 3
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Pod is restarting frequently"
+            description: "Container restart count exceeded threshold in hirelink-prod namespace."
+        - alert: HirelinkHighCPU
+          expr: sum(rate(container_cpu_usage_seconds_total{namespace="hirelink-prod",container!=""}[5m])) by (pod) > 0.8
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High CPU usage"
+            description: "Pod CPU usage is above 80%."
+        - alert: HirelinkHighMemory
+          expr: (container_memory_working_set_bytes{namespace="hirelink-prod",container!=""} / container_spec_memory_limit_bytes{namespace="hirelink-prod",container!=""}) > 0.9
+          for: 10m
+          labels:
+            severity: critical
+          annotations:
+            summary: "High memory usage"
+            description: "Pod memory usage is above 90% of limit."
+

@@ -1,0 +1,40 @@
+project_id = "deadbots"
+region     = "us-central1"
+
+cluster_name                  = "hirelink-prod-cluster"
+network_name                  = "hirelink-vpc"
+subnetwork_name               = "hirelink-subnet"
+subnetwork_cidr               = "10.10.0.0/20"
+artifact_registry_repository  = "hirelink"
+
+namespace                = "hirelink-prod"
+k8s_service_account_name = "hirelink-ksa"
+workload_gsa_account_id  = "sa-hirelink-workload-prod"
+
+ingress_static_ip_name = "hirelink-ingress-ip"
+ssl_certificate_name   = "hirelink-managed-cert"
+app_domain             = "app.niranjan.cloud"
+api_domain             = "api.niranjan.cloud"
+create_dns_records     = false
+dns_managed_zone       = "niranjan-cloud-zone"
+create_dns_zone        = false
+dns_zone_dns_name      = "niranjan.cloud."
+dns_ttl                = 300
+
+create_cloud_sql         = true
+manage_cloud_sql_database_and_user = false
+cloud_sql_instance_name  = "hirelink-production-db"
+cloud_sql_database_name  = "hirelink-production-db"
+cloud_sql_username       = "hirelink_app"
+# For ENTERPRISE_PLUS edition use a predefined tier (for example db-perf-optimized-N-2).
+cloud_sql_tier           = "db-perf-optimized-N-2"
+cloud_sql_database_version = "POSTGRES_18"
+cloud_sql_enable_public_ip = false
+cloud_sql_private_service_range_name = "hirelink-sql-private-range"
+cloud_sql_private_service_range_prefix_length = 16
+cloud_sql_deletion_protection = true
+cloud_sql_maintenance_window_day = 7
+cloud_sql_maintenance_window_hour = 3
+cloud_sql_maintenance_window_update_track = "stable"
+
+enable_deletion_protection = false

@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: hirelink-prod
+resources:
+  - 00-namespace.yaml
+  - 01-serviceaccounts.yaml
+  - 02-configmap.yaml
+  - 04-backend-deployment.yaml
+  - 05-frontend-deployment.yaml
+  - 06-services.yaml
+  - 07-ingress.yaml
+  - 08-hpa.yaml
+  - 09-pdb.yaml
+  - 10-networkpolicy.yaml
+  - 11-frontendconfig.yaml
+  - 12-backendconfig-cdn.yaml

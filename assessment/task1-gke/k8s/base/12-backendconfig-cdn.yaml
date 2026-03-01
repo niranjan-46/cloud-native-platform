@@ -1,0 +1,8 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: hirelink-web-backendconfig
+  namespace: hirelink-prod
+spec:
+  cdn:
+    enabled: true

@@ -1,0 +1,28 @@
+#virtual environment
+venv/
+
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+
+# macOS / Linux
+.DS_Store
+# GCP service account keys
+deadbots-*.json
+*.credentials.json
+# VS Code
+.vscode/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+*.terraform.tfstate.lock.info
+*.auto.tfvars
+terraform.tfvars

@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hirelink-api
+  namespace: hirelink-prod
+  labels:
+    app: hirelink-api
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  selector:
+    app: hirelink-api
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hirelink-web
+  namespace: hirelink-prod
+  labels:
+    app: hirelink-web
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+    cloud.google.com/backend-config: '{"default":"hirelink-web-backendconfig"}'
+spec:
+  selector:
+    app: hirelink-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+  type: ClusterIP

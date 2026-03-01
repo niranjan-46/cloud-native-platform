@@ -1,0 +1,18 @@
+{% extends "admin/login.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('HireLink Admin Portal') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">{{ site_header|default:_('HireLink Administration') }}</a>
+</h1>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+<link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
+{% endblock %} 

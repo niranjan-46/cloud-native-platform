@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .content {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .bid-details {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/vamsikrishna7-github/hirelink_images/refs/heads/main/android-chrome-512x512.png" alt="Zyukthi Logo" class="logo">
+        <h2>Bid Rejection Notification</h2>
+    </div>
+
+    <div class="content">
+        <p>Dear {{ employer.user.name }},</p>
+
+        <p>This email is to inform you that you have rejected the bid from <span class="highlight">{{ consultancy.name }}</span> for the position of <span class="highlight">{{ job.title }}</span>.</p>
+
+        <div class="bid-details">
+            <p><strong>Bid Details:</strong></p>
+            <ul>
+                <li>Consultancy: {{ consultancy.name }}</li>
+                <li>Position: {{ job.title }}</li>
+                <li>Proposed Fee: {{ bid.fee }} {{ job.currency }}</li>
+                <li>Bid Submitted: {{ bid.created_at|date:"F j, Y" }}</li>
+            </ul>
+        </div>
+
+        <p>You can continue to review other bids for this position or modify your job posting if needed.</p>
+
+        <p>If you have any questions or need assistance, please don't hesitate to contact our support team.</p>
+    </div>
+
+    <div class="footer">
+        <p>This is an automated message from Zyukthi Platform</p>
+        <p>© {{ current_year }} Zyukthi. All rights reserved.</p>
+    </div>
+</body>
+</html> 

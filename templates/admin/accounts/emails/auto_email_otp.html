@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zyukthi - Email Verification</title>
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px 0;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 4px solid #2563eb;
+        }
+        
+        .header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 180px;
+            margin-bottom: 15px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+        }
+        
+        .otp-container {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+            border: 1px solid #dbeafe;
+        }
+        
+        .otp-row {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+        
+        .otp-digit {
+            display: inline-block;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0 8px;
+            padding: 12px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            color: #2563eb;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .otp-code {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: #2563eb;
+            margin: 15px 0;
+        }
+        
+        .expiry {
+            font-weight: bold;
+            color: #dc2626;
+        }
+        
+        .alert {
+            border-radius: 12px;
+            padding: 20px;
+            background-color: #fff7ed;
+            color: #92400e;
+            margin-top: 25px;
+        }
+        
+        .footer {
+            padding: 25px;
+            background-color: #f8fafc;
+            font-size: 13px;
+            color: #64748b;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .footer-links {
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: #64748b;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .footer-links a:hover {
+            color: #2563eb;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .otp-code {
+                font-size: 24px;
+                letter-spacing: 4px;
+            }
+            
+            .otp-digit {
+                font-size: 24px;
+                padding: 10px 15px;
+                margin: 0 5px;
+                min-width: 40px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .otp-code {
+                font-size: 20px;
+                letter-spacing: 3px;
+            }
+            
+            .otp-digit {
+                font-size: 20px;
+                padding: 8px 12px;
+                margin: 0 3px;
+                min-width: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <img src="https://raw.githubusercontent.com/vamsikrishna7-github/hirelink_images/refs/heads/main/Purple%20and%20Green%20Gradient%20Creative%20Industry%20General%20Linkedin%20Banner.jpg" alt="Zyukthi Banner" class="banner-img">
+        
+        <div class="content">
+            <p style="font-size: 18px; margin-bottom: 20px;">Hi <strong>{{ recipient_name }}</strong>,</p>
+            
+            <p style="margin-bottom: 20px;">Here is your One Time Password (OTP) for verifying your email address with Zyukthi:</p>
+            
+            <div class="otp-container">
+                <div class="otp-code">
+                    {% for digit in otp %}
+                    {{ digit }}&nbsp; 
+                    {% endfor %}
+                </div>
+                <p>Please enter this code to complete your registration.</p>
+                <p>This OTP will expire in <span class="expiry">10 minutes</span>.</p>
+            </div>
+            
+            <div class="alert">
+                <p style="margin: 0;">If you didn't request this code, please ignore this email or contact our support team.</p>
+            </div>
+            
+            <p style="margin-top: 30px;">Best Regards,<br>The <strong>Zyukthi</strong> Team</p>
+        </div>
+        
+        <div class="footer">
+            <p style="margin: 0 0 10px 0;">© 2025 Zyukthi. All rights reserved.</p>
+            <p style="margin: 0 0 15px 0;">You are receiving this email because you registered to join the Zyukthi platform.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Help Center</a>
+                <a href="#">Unsubscribe</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

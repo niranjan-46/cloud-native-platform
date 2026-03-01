@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
+  <title>Zyukthi API – Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .fade-in {
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-glow {
+      background-color: #0dcaf0;
+      border: none;
+      color: black;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #0dcaf0, 0 0 20px #0dcaf0 inset;
+      margin: 0 10px;
+    }
+
+    .btn-glow:hover {
+      background-color: #31d2f2;
+      box-shadow: 0 0 15px #0dcaf0, 0 0 30px #0dcaf0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container fade-in">
+    <h1 class="display-4 mb-4">Welcome to <strong class="fw-bolder text-warning">HireLink API</strong></h1>
+    <p class="lead mb-5">Your centralized backend platform, secured and scalable.</p>
+    <div class="d-flex justify-content-center">
+      <a href="/control/" class="btn btn-glow btn-lg me-3">Admin Login</a>
+      <a href="https://app.niranjan.cloud/" class="btn btn-glow btn-lg" target="_blank">View Site</a>
+    </div>
+  </div>
+</body>
+</html>

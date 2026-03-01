@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .content {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/vamsikrishna7-github/hirelink_images/refs/heads/main/android-chrome-512x512.png" alt="Zyukthi Logo" class="logo">
+        <h2>Employment Recruitment Agreement - Consultancy Acknowledgment</h2>
+    </div>
+
+    <div class="content">
+        <p>Dear {{ consultancy.user.name }},</p>
+
+        <p>Congratulations! Your bid for the position of <span class="highlight">{{ job.title }}</span> has been accepted by {{ employer.company_name }}.</p>
+
+        <p><strong>Agreement Details:</strong></p>
+        <ul>
+            <li>Agreement ID: {{ agreement_id }}</li>
+            <li>Employer: {{ employer.company_name }}</li>
+            <li>Position: {{ job.title }}</li>
+            <li>Fee: {{ bid.fee }} {{ job.currency }}</li>
+            <li>Job Type: {{ job.get_job_type_display }}</li>
+            <li>Work Mode: {{ job.get_work_mode_display }}</li>
+            <li>Location: {{ job.location }}</li>
+        </ul>
+
+        <p>Please find attached the complete agreement document for your records. You can also access the agreement through the following link:</p>
+        
+        <p style="text-align: center;">
+            <a href="{{ bid.agreement_pdf_url }}" class="button">View Agreement</a>
+        </p>
+
+        <p>By accepting this agreement, you acknowledge and agree to:</p>
+        <ul>
+            <li>Provide recruitment services as specified in the agreement</li>
+            <li>Submit qualified candidates within the agreed timeline</li>
+            <li>Maintain confidentiality of all candidate information</li>
+            <li>Follow the payment terms and conditions</li>
+        </ul>
+
+        <p>Please ensure you review the agreement thoroughly and begin the recruitment process as per the agreed timeline.</p>
+
+        <p>If you have any questions or need clarification on any aspect of the agreement, please don't hesitate to contact us.</p>
+    </div>
+
+    <div class="footer">
+        <p>This is an automated message from Zyukthi Platform</p>
+        <p>© {{ current_year }} Zyukthi. All rights reserved.</p>
+    </div>
+</body>
+</html>

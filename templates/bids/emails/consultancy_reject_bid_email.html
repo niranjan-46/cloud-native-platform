@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .content {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .bid-details {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #e74c3c;
+        }
+        .next-steps {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/vamsikrishna7-github/hirelink_images/refs/heads/main/android-chrome-512x512.png" alt="Zyukthi Logo" class="logo">
+        <h2>Bid Rejection Notification</h2>
+    </div>
+
+    <div class="content">
+        <p>Dear {{ consultancy.user.name }},</p>
+
+        <p>We regret to inform you that your bid for the position of <span class="highlight">{{ job.title }}</span> at <span class="highlight">{{ employer.company_name }}</span> has not been accepted.</p>
+
+        <div class="bid-details">
+            <p><strong>Bid Details:</strong></p>
+            <ul>
+                <li>Position: {{ job.title }}</li>
+                <li>Employer: {{ employer.company_name }}</li>
+                <li>Proposed Fee: {{ bid.fee }} {{ job.currency }}</li>
+                <li>Bid Submitted: {{ bid.created_at|date:"F j, Y" }}</li>
+            </ul>
+        </div>
+
+        <div class="next-steps">
+            <p><strong>Next Steps:</strong></p>
+            <ul>
+                <li>You can submit new bids for other job postings</li>
+                <li>Review and update your bid strategy</li>
+                <li>Consider adjusting your fee structure or proposal content</li>
+            </ul>
+        </div>
+
+        <p>We encourage you to continue using our platform to find suitable opportunities. If you need any assistance or have questions, our support team is here to help.</p>
+    </div>
+
+    <div class="footer">
+        <p>This is an automated message from Zyukthi Platform</p>
+        <p>© {{ current_year }} Zyukthi. All rights reserved.</p>
+    </div>
+</body>
+</html> 
