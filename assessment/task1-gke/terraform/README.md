@@ -231,6 +231,9 @@ For direct private-IP DB mode, keep:
 - Backend pod connects directly to Cloud SQL private IP.
 - App/API can stay public through HTTPS ingress; database stays private.
 - Keep `cloud_sql_deletion_protection = true` for production safety.
+- HTTP/HTTPS behavior for domains is controlled by Kubernetes Ingress/FrontendConfig manifests (not Terraform).
+  - Test mode: `allow-http: "true"` and `redirectToHttps.enabled: false`
+  - Production mode: `allow-http: "true"` and `redirectToHttps.enabled: true`
 
 ## Quick Commands (Future Reference)
 

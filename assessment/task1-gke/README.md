@@ -32,6 +32,29 @@ flowchart LR
 
 This is the standard long-term L7 application LB pattern on GKE.
 
+## HTTP Test Mode (Temporary)
+
+For testing, HTTP is enabled at the load balancer level for both domains:
+
+- `http://app.niranjan.cloud`
+- `http://api.niranjan.cloud`
+
+This is controlled by:
+
+- Ingress annotation: `kubernetes.io/ingress.allow-http: "true"`
+- FrontendConfig: `redirectToHttps.enabled: false`
+
+Apply test mode:
+
+```powershell
+kubectl apply -k .\assessment\task1-gke\k8s\base
+```
+
+After testing, switch back to production behavior:
+
+- keep `allow-http: "true"` (LB listener allowed)
+- set `redirectToHttps.enabled: true` in `11-frontendconfig.yaml`
+
 ## 1) Prerequisites
 
 - Tools: `gcloud`, `kubectl`, `docker`
@@ -247,7 +270,7 @@ kubectl -n hirelink-prod rollout restart deploy/hirelink-web
 - Read-only root filesystem for frontend/backend with explicit writable mounts
 - Split service accounts: API workload identity enabled, frontend token disabled
 - Default deny NetworkPolicy with explicit ingress/egress allow-lists
-- GKE L7 HTTP(S) load balancer with forced HTTP->HTTPS redirect via `FrontendConfig`
+- GKE L7 HTTP(S) load balancer with HTTP test mode enabled (`FrontendConfig` can enforce redirect in production)
 - Cloud CDN enabled on frontend backend-service path (`hirelink-web`) using `BackendConfig`
 - HPA + PDB for availability during scaling and voluntary disruptions
 

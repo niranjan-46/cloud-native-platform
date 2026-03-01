@@ -1,0 +1,5 @@
+tempo:
+  persistence:
+    enabled: true
+    storageClassName: standard-rwo
+    size: 10Gi

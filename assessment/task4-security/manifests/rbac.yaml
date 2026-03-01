@@ -5,10 +5,13 @@ metadata:
   namespace: hirelink-prod
 rules:
   - apiGroups: [""]
-    resources: ["pods", "services", "configmaps"]
+    resources: ["pods", "services", "configmaps", "events"]
     verbs: ["get", "list", "watch"]
   - apiGroups: ["apps"]
-    resources: ["deployments"]
+    resources: ["deployments", "replicasets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["autoscaling"]
+    resources: ["horizontalpodautoscalers"]
     verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -18,11 +21,14 @@ metadata:
   namespace: hirelink-prod
 rules:
   - apiGroups: [""]
-    resources: ["pods", "services", "events", "configmaps"]
-    verbs: ["get", "list", "watch", "create", "update", "patch"]
+    resources: ["pods", "pods/log", "services", "events", "configmaps"]
+    verbs: ["get", "list", "watch"]
   - apiGroups: ["apps"]
     resources: ["deployments", "replicasets"]
-    verbs: ["get", "list", "watch", "update", "patch"]
+    verbs: ["get", "list", "watch", "patch", "update"]
+  - apiGroups: ["autoscaling"]
+    resources: ["horizontalpodautoscalers"]
+    verbs: ["get", "list", "watch", "patch", "update"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -33,4 +39,79 @@ rules:
   - apiGroups: ["*"]
     resources: ["*"]
     verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer-binding
+  namespace: hirelink-prod
+subjects:
+  - kind: Group
+    name: hirelink-developers
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: operator-binding
+  namespace: hirelink-prod
+subjects:
+  - kind: Group
+    name: hirelink-operators
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: operator-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: admin-binding
+  namespace: hirelink-prod
+subjects:
+  - kind: Group
+    name: hirelink-admins
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: admin-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cicd-deployer
+  namespace: hirelink-prod
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cicd-deployer-role
+  namespace: hirelink-prod
+rules:
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch", "patch", "update"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cicd-deployer-binding
+  namespace: hirelink-prod
+subjects:
+  - kind: ServiceAccount
+    name: cicd-deployer
+    namespace: hirelink-prod
+roleRef:
+  kind: Role
+  name: cicd-deployer-role
+  apiGroup: rbac.authorization.k8s.io
 

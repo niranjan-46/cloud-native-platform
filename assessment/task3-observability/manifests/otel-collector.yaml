@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otel-collector-config
+  namespace: observability
+data:
+  collector.yaml: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:4317
+          http:
+            endpoint: 0.0.0.0:4318
+
+    processors:
+      batch: {}
+      memory_limiter:
+        check_interval: 1s
+        limit_mib: 256
+        spike_limit_mib: 64
+
+    exporters:
+      otlp/tempo:
+        endpoint: tempo.observability.svc.cluster.local:4317
+        tls:
+          insecure: true
+      prometheus:
+        endpoint: 0.0.0.0:8889
+      logging:
+        verbosity: normal
+
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [memory_limiter, batch]
+          exporters: [otlp/tempo, logging]
+        metrics:
+          receivers: [otlp]
+          processors: [memory_limiter, batch]
+          exporters: [prometheus, logging]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-collector
+  namespace: observability
+  labels:
+    app: otel-collector
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: otel-collector
+  template:
+    metadata:
+      labels:
+        app: otel-collector
+    spec:
+      containers:
+        - name: otel-collector
+          image: otel/opentelemetry-collector-contrib:0.106.1
+          args: ["--config=/conf/collector.yaml"]
+          ports:
+            - name: otlp-grpc
+              containerPort: 4317
+            - name: otlp-http
+              containerPort: 4318
+            - name: prom
+              containerPort: 8889
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 300m
+              memory: 384Mi
+          volumeMounts:
+            - name: config
+              mountPath: /conf
+      volumes:
+        - name: config
+          configMap:
+            name: otel-collector-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: otel-collector
+  namespace: observability
+  labels:
+    app: otel-collector
+spec:
+  selector:
+    app: otel-collector
+  ports:
+    - name: otlp-grpc
+      port: 4317
+      targetPort: otlp-grpc
+    - name: otlp-http
+      port: 4318
+      targetPort: otlp-http
+    - name: prom
+      port: 8889
+      targetPort: prom

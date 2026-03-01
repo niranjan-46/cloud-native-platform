@@ -1,0 +1,19 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default-strict-mtls
+  namespace: hirelink-prod
+spec:
+  mtls:
+    mode: STRICT
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: default-istio-mutual
+  namespace: hirelink-prod
+spec:
+  host: "*.hirelink-prod.svc.cluster.local"
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

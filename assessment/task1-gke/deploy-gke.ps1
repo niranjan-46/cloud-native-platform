@@ -6,8 +6,8 @@ param(
   [string]$Namespace = "hirelink-prod",
   [string]$TlsCertificateName = "hirelink-managed-cert",
   [string]$IngressName = "hirelink-ingress",
-  [string]$BackendImageTag = "latest",
-  [string]$FrontendImageTag = "latest"
+  [string]$BackendImageTag = "v1.1.4",
+  [string]$FrontendImageTag = "v1.1.1"
 )
 
 $ErrorActionPreference = "Stop"
@@ -23,6 +23,14 @@ function Assert-CommandExists {
 Assert-CommandExists -Name "gcloud"
 Assert-CommandExists -Name "kubectl"
 
+if ([string]::IsNullOrWhiteSpace($BackendImageTag) -or [string]::IsNullOrWhiteSpace($FrontendImageTag)) {
+  throw "Both -BackendImageTag and -FrontendImageTag are required."
+}
+
+if ($BackendImageTag -eq "latest" -or $FrontendImageTag -eq "latest") {
+  throw "Do not use ':latest' for production deploys. Use immutable version tags (for example v1.1.4)."
+}
+
 Write-Host "Setting gcloud project..."
 gcloud config set project $ProjectId
 
@@ -35,6 +43,16 @@ kubectl apply -k "$ScriptDir\k8s\base"
 Write-Host "Setting backend/frontend images..."
 $backendImage = "$Region-docker.pkg.dev/$ProjectId/$RepoName/hirelink-api:$BackendImageTag"
 $frontendImage = "$Region-docker.pkg.dev/$ProjectId/$RepoName/hirelink-web:$FrontendImageTag"
+
+Write-Host "Validating image tags exist in Artifact Registry..."
+$backendTagExists = gcloud artifacts docker tags list "$Region-docker.pkg.dev/$ProjectId/$RepoName/hirelink-api" --project $ProjectId --filter "tag=$BackendImageTag" --format "value(tag)"
+if ([string]::IsNullOrWhiteSpace($backendTagExists)) {
+  throw "Backend image tag '$BackendImageTag' not found in Artifact Registry."
+}
+$frontendTagExists = gcloud artifacts docker tags list "$Region-docker.pkg.dev/$ProjectId/$RepoName/hirelink-web" --project $ProjectId --filter "tag=$FrontendImageTag" --format "value(tag)"
+if ([string]::IsNullOrWhiteSpace($frontendTagExists)) {
+  throw "Frontend image tag '$FrontendImageTag' not found in Artifact Registry."
+}
 
 kubectl -n $Namespace set image deploy/hirelink-api app=$backendImage
 kubectl -n $Namespace set image deploy/hirelink-web web=$frontendImage

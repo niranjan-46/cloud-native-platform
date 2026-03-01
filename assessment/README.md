@@ -30,3 +30,14 @@ This folder contains an implementation-ready blueprint for deploying HireLink on
    - Backend health endpoint: `/health/`
    - Frontend route: `/`
    - HPA/PDB/NetworkPolicy resources are active.
+
+## Fast Start (Task 3 + Task 4)
+
+1. Observability stack:
+   - Follow `task3-observability/README.md`
+   - Install `kube-prometheus-stack`, `loki`, `tempo`, and `blackbox-exporter`
+   - Apply: `kubectl apply -k assessment/task3-observability/manifests`
+2. Security hardening controls:
+   - Follow `task4-security/README.md`
+   - Install `kyverno` + `secrets-store-csi-driver` (+ GCP provider)
+   - Apply: `kubectl apply -k assessment/task4-security/manifests`

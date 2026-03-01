@@ -17,7 +17,7 @@ spec:
           spec:
             containers:
               - securityContext:
-                  privileged: "false"
+                  privileged: false
 ---
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
@@ -38,5 +38,94 @@ spec:
           spec:
             containers:
               - securityContext:
-                  readOnlyRootFilesystem: "true"
+                  readOnlyRootFilesystem: true
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-run-as-non-root
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: run-as-non-root
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "runAsNonRoot must be true for all containers."
+        pattern:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-host-namespace-sharing
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: no-host-network-pid-ipc
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "hostNetwork, hostPID, and hostIPC are forbidden."
+        pattern:
+          spec:
+            hostNetwork: false
+            hostPID: false
+            hostIPC: false
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-runtime-default-seccomp
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: seccomp-runtime-default
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "seccomp profile must be RuntimeDefault."
+        pattern:
+          spec:
+            securityContext:
+              seccompProfile:
+                type: RuntimeDefault
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-signed-images
+spec:
+  validationFailureAction: Audit
+  background: false
+  rules:
+    - name: verify-gar-image-signature
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      verifyImages:
+        - imageReferences:
+            - "us-central1-docker.pkg.dev/deadbots/hirelink/*"
+          mutateDigest: true
+          required: true
+          attestors:
+            - count: 1
+              entries:
+                - keys:
+                    publicKeys: |-
+                      -----BEGIN PUBLIC KEY-----
+                      REPLACE_WITH_COSIGN_PUBLIC_KEY
+                      -----END PUBLIC KEY-----
 

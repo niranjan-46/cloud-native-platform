@@ -1,0 +1,27 @@
+loki:
+  persistence:
+    enabled: true
+    storageClassName: standard-rwo
+    size: 10Gi
+
+grafana:
+  enabled: false
+
+promtail:
+  enabled: true
+  # GKE Autopilot compatible hostPath configuration for Promtail
+  # Autopilot only allows /var/log/ for hostPath and in read-only mode.
+  # /var/lib/docker/containers is not allowed.
+  # /run/promtail should use emptyDir.
+  defaultVolumeMounts:
+    - name: pods
+      mountPath: /var/log/pods
+      readOnly: true
+    - name: run
+      mountPath: /run/promtail
+  defaultVolumes:
+    - name: pods
+      hostPath:
+        path: /var/log/pods
+    - name: run
+      emptyDir: {}

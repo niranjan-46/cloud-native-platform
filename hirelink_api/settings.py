@@ -195,6 +195,8 @@ _default_cors_allowed_origins = [
     "http://localhost:3001",
     "http://127.0.0.1:3001",
     "https://app.niranjan.cloud",
+    "https://api.niranjan.cloud",
+    "https://admin.niranjan.cloud",
 ]
 CORS_ALLOWED_ORIGINS = _to_csv_list(
     get_secret_or_env_prod("CORS_ALLOWED_ORIGINS", ",".join(_default_cors_allowed_origins)),
