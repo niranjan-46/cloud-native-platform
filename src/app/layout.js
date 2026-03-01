@@ -15,8 +15,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const googleClientId =
+    process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
+    "700083369402-c89cqui2j49cjhkgvuq0h3fjjn165o8t.apps.googleusercontent.com";
+
   return (
-    <GoogleOAuthProvider clientId="578224276104-sk0t3bvkn2qerllusiaibg6t0k348g31.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={googleClientId}>
     <html lang="en">
       <head>
         <Script
