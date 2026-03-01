@@ -1,0 +1,120 @@
+.modalContainer {
+    padding: 1.5rem;
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #dc2626; /* Red for danger/destructive action */
+  }
+  
+  .closeButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    padding: 0.25rem;
+  }
+  
+  .warningSection {
+    background-color: #fef2f2;
+    border-left: 4px solid #dc2626;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .warningTitle {
+    color: #dc2626;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .warningText {
+    color: #7f1d1d;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .inputGroup {
+    margin-bottom: 1.5rem;
+  }
+  
+  .label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  
+  .buttonGroup {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .cancelButton {
+    background-color: #e5e7eb;
+    color: #374151;
+    border: 1px solid #d1d5db;
+  }
+  
+  .cancelButton:hover {
+    background-color: #d1d5db;
+  }
+  
+  .deleteButton {
+    background-color: #dc2626;
+    color: white;
+    border: 1px solid #dc2626;
+  }
+  
+  .deleteButton:hover:not(:disabled) {
+    background-color: #b91c1c;
+  }
+  
+  .deleteButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #dc2626;
+  }
+  
+  .timerText {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }

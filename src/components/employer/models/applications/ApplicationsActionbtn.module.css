@@ -1,0 +1,499 @@
+.actionButtons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .viewButton {
+    background: linear-gradient(135deg, #3b7ddd 0%, #2a65c0 100%);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .viewButton:hover {
+    background: linear-gradient(135deg, #2a65c0 0%, #204e9b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(43, 125, 221, 0.2);
+  }
+  
+  .modalContainer {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .modalHeader {
+    background: linear-gradient(135deg, #3b7ddd 0%, #2a65c0 100%);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  
+  .heading {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .closeButton {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .closeButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+  }
+  
+  .applicationDetails {
+    padding: 1.5rem;
+  }
+  
+  .candidateHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 2rem;
+  }
+  
+  .profileSection {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #3b7ddd;
+    box-shadow: 0 4px 12px rgba(59, 125, 221, 0.2);
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .placeholderImage {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3b7ddd 0%, #2a65c0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .candidateInfo {
+    flex: 1;
+  }
+  
+  .candidateName {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #1f2937;
+  }
+  
+  .candidateEmail, .candidatePhone {
+    color: #6b7280;
+    margin: 0.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .statusActions {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .statusSelect {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    color: #1f2937;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .statusSelect:hover {
+    border-color: #3b7ddd;
+  }
+  
+  .statusSelect:focus {
+    outline: none;
+    border-color: #2a65c0;
+    box-shadow: 0 0 0 3px rgba(59, 125, 221, 0.1);
+  }
+  
+  .resumeButton {
+    background: linear-gradient(135deg, #3b7ddd 0%, #2a65c0 100%);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .resumeButton:hover {
+    background: linear-gradient(135deg, #2a65c0 0%, #204e9b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(43, 125, 221, 0.2);
+  }
+  
+  .resumeButton:disabled {
+    background: #e5e7eb;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .statusSelect,
+.resumeButton {
+  width: 200px;
+}
+
+  
+  .jobInfo {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+  
+  .jobTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0.5rem 0 1rem 0;
+  }
+  
+  .jobDetails {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .jobDetails p {
+    margin: 0;
+    color: #4b5563;
+  }
+  
+  .details {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .summary {
+    padding: 1rem 1.5rem;
+    background: #f9fafb;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    color: #4b5563;
+    transition: all 0.3s ease;
+  }
+  
+  .summary:hover {
+    background: #f3f4f6;
+  }
+  
+  .detailsContent {
+    padding: 1.5rem;
+  }
+  
+  .detailSection {
+    margin-bottom: 2rem;
+  }
+  
+  .detailSection h4 {
+    color: #1f2937;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .skillsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .skillTag {
+    background: linear-gradient(135deg, #5893e0 0%, #3b7ddd 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .skillTag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 125, 221, 0.2);
+  }
+  
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #3b7ddd, #5893e0);
+  }
+  
+  .timelineItem {
+    position: relative;
+    padding-bottom: 2rem;
+  }
+  
+  .timelineItem::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #3b7ddd;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #3b7ddd;
+  }
+  
+  .timelineContent {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .timelineContent:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timelineContent h5 {
+    color: #1f2937;
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .schoolName, .companyName {
+    color: #4b5563;
+    font-weight: 500;
+    margin: 0.25rem 0;
+  }
+  
+  .location {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+  }
+  
+  .duration {
+    color: #3b7ddd;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0.25rem 0;
+  }
+  
+  .grade {
+    color: #3b7ddd;
+    font-weight: 500;
+    margin: 0.25rem 0;
+  }
+  
+  .description {
+    color: #4b5563;
+    margin: 0.5rem 0 0 0;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    .candidateHeader {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  
+    .statusActions {
+      width: 100%;
+      flex-direction: column;
+    }
+  
+    .statusSelect, .resumeButton {
+      width: 100%;
+    }
+  
+    .jobDetails {
+      grid-template-columns: 1fr;
+    }
+  
+    .timeline {
+      padding-left: 1.5rem;
+    }
+  
+    .timelineItem::before {
+      left: -2rem;
+    }
+  }
+  
+  /* Rejection Modal Styles */
+  .rejectionModalContainer {
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .rejectionModalHeader {
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .rejectionModalTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .rejectionModalSubtitle {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+  }
+  
+  .rejectionModalContent {
+    margin-bottom: 24px;
+  }
+  
+  .rejectionFormGroup {
+    margin-bottom: 16px;
+  }
+  
+  .rejectionLabel {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .rejectionTextarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.2s ease;
+  }
+  
+  .rejectionTextarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+  }
+  
+  .rejectionTextarea::placeholder {
+    color: #999;
+  }
+  
+  .rejectionModalActions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+  
+  .rejectionCancelButton {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background: white;
+    color: #666;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .rejectionCancelButton:hover:not(:disabled) {
+    background: #f8f9fa;
+    border-color: #ccc;
+  }
+  
+  .rejectionCancelButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .rejectionSubmitButton {
+    padding: 10px 20px;
+    border: none;
+    background: #dc3545;
+    color: white;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .rejectionSubmitButton:hover:not(:disabled) {
+    background: #c82333;
+  }
+  
+  .rejectionSubmitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #6c757d;
+  }
+  

@@ -1,0 +1,37 @@
+.container {
+  flex: 1;
+  padding: 32px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(44.46% 55.44% at 66.94% 47.22%, #FFF 0%, #B1E0FE 0%, #A8DBFF 0.01%, #EDFFFA 100%);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+
+.wrapper {
+  flex-direction: column;
+}
+.container {
+  padding: 30px;
+  margin-top: 40px; 
+}
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 60px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 310px) {
+ .profile {
+  display: none !important;
+}
+}

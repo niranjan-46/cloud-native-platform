@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.gitignore
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage
+.vscode
+.idea
+.DS_Store
+
+# Keep production env only for image build
+.env.local
+.env.development

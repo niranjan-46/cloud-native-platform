@@ -1,0 +1,179 @@
+.applyJobBg {
+  background: linear-gradient(135deg, #f7fbfd 0%, #e8f4f8 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.jobCard {
+  border-radius: 1.5rem !important;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideIn 0.5s ease-out;
+}
+
+.jobCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.sectionCard {
+  border-radius: 1.5rem !important;
+  background: #fff;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.sectionCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer button {
+  transition: all 0.3s ease;
+}
+
+.buttonContainer button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer button:active {
+  transform: translateY(0);
+}
+
+/* Loading animation */
+.loadingSpinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Enhanced responsive styles */
+@media (max-width: 767px) {
+  .jobCard {
+    padding: 0 !important;
+    margin: 0 1rem;
+  }
+  
+  .buttonContainer {
+    margin-top: 1rem !important;
+    align-items: stretch !important;
+    padding: 0 1rem 1rem 1rem;
+  }
+  
+  .buttonContainer button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .jobCard .row {
+    flex-direction: column !important;
+    gap: 0.5rem;
+  }
+  
+  .sectionCard {
+    margin: 1rem;
+  }
+}
+
+/* Enhanced typography and spacing */
+.jobTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.companyName {
+  color: #4a5568;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.jobMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.jobMetaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.jobMetaItem i {
+  color: #4299e1;
+}
+
+/* Section headers */
+.sectionHeader {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Overview items */
+.overviewItem {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.overviewItem:hover {
+  background: #edf2f7;
+  transform: translateX(5px);
+}
+
+.overviewItemIcon {
+  color: #4299e1;
+  font-size: 1.25rem;
+}
+
+.overviewItemLabel {
+  color: #718096;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.overviewItemValue {
+  color: #2d3748;
+  font-weight: 500;
+}

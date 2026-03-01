@@ -1,0 +1,537 @@
+.signupContainer {
+    background: linear-gradient(180deg, rgba(239, 249, 255, 0.85) 0%, rgba(159, 219, 255, 0.85) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Add padding to prevent touching screen edges */
+  }
+  
+  .signupCard {
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: none;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px; /* Add margin for better spacing */
+  }
+  
+  .userType {
+    color: #008AE0;
+  }
+  
+  
+  .title {
+    color: #000;
+    text-align: center;
+    font-family: Outfit, sans-serif;
+    font-size: 32px; /* Reduced from 40px */
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 1rem;
+  }
+  
+    
+    .title {
+      color: #000;
+      text-align: center;
+      
+      /* Sub-heading h4 */
+      font-family: Outfit, sans-serif;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    
+    .loginPrompt {
+      color: #7f8c8d;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    
+    .loginLink {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .loginLink:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+    
+    .inputLabel {
+      color: #000000;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .iconInputWrapper {
+      position: relative;
+      width: 100%;
+    }
+    
+    .inputIcon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8d8d8d;
+      font-size: 1rem;
+      z-index: 2;
+    }
+    
+    .formControl {
+      height: 50px;
+      border-radius: 40px !important;
+      border: 1px solid var(--Grey-2, #DCDCDC);
+      /* background-color: #f9f9f9; */
+      padding-left: 44px !important;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .formControl:focus {
+      border-color: #3498db;
+      /* box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25); */
+      background-color: #fff;
+      box-shadow: none;
+    }
+  
+    .iconInputWrapper:focus-within .inputIcon {
+      color: #3498db !important;
+    }
+  
+    
+  
+    .otpInput {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+    
+    .otpButton {
+      height: 50px;
+      border-radius: 0 40px 40px 0 !important;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .otpButton:hover {
+      background-color: #2980b9;
+    }
+    
+    .otpButton:disabled {
+      background-color: #bdc3c7;
+      color: #7f8c8d;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    
+    .backButton {
+      display: flex;
+      align-items: center;
+      border-radius: 80px;
+      color: #7f8c8d;
+      font-weight: 500;
+      border: 1px solid #bdc3c7;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .backButton:hover {
+      background-color: #f8f9fa;
+      color: #2c3e50;
+    }
+    
+    .nextButton {
+      border-radius: 80px;
+      background: #008AE0;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 10px 30px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    
+    .nextButton:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: #008AE0;
+    }
+  
+    .nextButton:disabled {
+      background-color: #bdc3c7;
+      color: #7f8c8d;
+      cursor: not-allowed;
+      opacity: 0.7;
+      transform: none;
+      box-shadow: none;
+    }
+  
+    .errorMessage {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      color: #dc3545;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  
+    .errorIcon {
+      font-size: 0.875rem;
+      color: #dc3545;
+    }
+  
+    .successMessage {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      color: #04BF1A;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  
+    .successIcon {
+      font-size: 0.875rem;
+      color: #04BF1A;
+    }
+  
+    /* Add these to your existing CSS */
+  .otpGroup {
+      display: flex;
+      align-items: stretch;
+    }
+    
+    .otpGroup .iconInputWrapper {
+      flex: 1;
+      position: relative;
+    }
+    
+    .otpGroup .form-control {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      height: 50px;
+    }
+    
+  
+    /* page indicator */
+    .pageIndicatorText {
+  border-radius: 66px;
+  background: rgba(4, 191, 26, 0.10);
+  padding: 8px 20px;
+  
+    }
+    .pageIndicator {
+      color: #04BF1A;
+      font-family: Poppins, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 1.5rem;
+    }
+    
+    .currentPage {
+      color: #04BF1A;
+    }
+    
+    .totalPages {
+      color: #04BF1A;
+    }
+  
+    .passwordToggle {
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .passwordToggle.inputIcon {
+      color: #292929 !important;
+    }
+  
+  
+    /* Add responsive adjustments */
+  @media (max-width: 768px) {
+    .formControl {
+      border-radius: 20px !important;
+      height: 50px!important;
+    }
+    .inputLabel {
+      font-size: 12px!important;
+    }
+  
+    .otpButton {
+      border-top-right-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+      font-size: 12px !important;
+    }
+    
+    .signupCard {
+      border-radius: 20px;
+      margin: 0px !important;
+      padding: 0px !important;
+    }
+    
+    .title {
+      font-size: 28px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .signupContainer {
+      padding: 0px;
+      margin: 0px;
+    }
+    .signupCard {
+      margin: 0px;
+      border-radius: 0px;
+    }
+    
+    .title {
+      font-size: 24px;
+    }
+    
+    .pageIndicatorText {
+      padding: 6px 15px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .cardBody {
+      padding: 6px!important;
+      padding-bottom: 10px!important;
+      padding-top: 10px!important;
+    }
+  }
+  
+ /* styles.module.css */
+
+/* Nuclear option - removes ALL styling */
+.phoneInputContainer :global(.PhoneInput) {
+  border: 1px solid #DCDCDC !important;
+  background: transparent !important;
+}
+
+.phoneInputContainer :global(.PhoneInputInput) {
+  height: 50px !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.phoneInputContainer :global(.PhoneInputCountrySelect) {
+  border: 1px solid #DCDCDC !important;
+  background: transparent !important;
+}
+
+
+
+/* Remove focus rings */
+.phoneInputContainer :global(.PhoneInputInput:focus) {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.phoneInputWrapper {
+  height: 50px;
+  border-radius: 40px !important;
+  border: 1px solid var(--Grey-2, #DCDCDC);
+  padding-left: 20px !important;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  width: 100% !important;
+}
+
+
+.phoneInputWrapper:focus-within {
+  border: 1px solid #008AE0 !important;
+  background-color: #fff;
+}
+
+.phoneInputError {
+  border: 1px solid #dc3545 !important;
+}
+
+.inputError {
+  border: 1px solid #dc3545 !important;
+}
+
+.skipButton {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+  padding: 0.5rem 1rem;
+  border-radius: 80px;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.skipButton:hover {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.addButton {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #90caf9;
+  padding: 0.5rem 1rem;
+  border-radius: 80px;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.addButton:hover {
+  background-color: #bbdefb;
+  color: #1565c0;
+}
+
+.deleteButton {
+  background-color: #fff;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.deleteButton:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.cardBody {
+  padding: 2rem !important;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .signupCard {
+    margin: 10px;
+    border-radius: 16px;
+  }
+
+  .cardBody {
+    padding: 1.5rem !important;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .formControl {
+    height: 45px;
+    font-size: 0.9rem;
+  }
+
+  .inputLabel {
+    font-size: 0.8rem;
+  }
+
+  .pageIndicatorText {
+    padding: 6px 15px;
+    font-size: 14px;
+  }
+
+  .nextButton,
+  .skipButton,
+  .addButton,
+  .deleteButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .signupContainer {
+    padding: 10px;
+  }
+
+  .signupCard {
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .cardBody {
+    padding: 1rem !important;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .loginPrompt {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .formControl {
+    height: 40px;
+    font-size: 0.85rem;
+  }
+
+  .inputLabel {
+    font-size: 0.75rem;
+  }
+
+  .pageIndicatorText {
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+
+  .nextButton,
+  .skipButton,
+  .addButton,
+  .deleteButton {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  /* Stack buttons on very small screens */
+  .d-flex.gap-2 {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .d-flex.gap-2 .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Adjust button container for mobile */
+  .d-flex.justify-content-between.align-items-center.mt-4 {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .d-flex.justify-content-between.align-items-center.mt-4 > div {
+    width: 100%;
+  }
+}
+
+
+/* Add smooth transitions */
+.formControl,
+.btn,
+.pageIndicatorText {
+  transition: all 0.3s ease;
+}
+

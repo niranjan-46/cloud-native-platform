@@ -1,0 +1,7 @@
+.hidden {
+    transform: translateY(-100%);
+}
+
+.navbar {
+    transition: transform 0.3s ease-in-out;
+}

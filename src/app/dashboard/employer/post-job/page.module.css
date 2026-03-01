@@ -1,0 +1,106 @@
+.card {
+    border-radius: 40px;
+    border: 1px solid #CCC;
+    background: rgba(230, 230, 230, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.heading {
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.subheading {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.input, .form-select {
+    border-radius: 40px !important;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: transparent;
+    height: 50px;
+    padding: 12px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.input::placeholder {
+    color: rgba(0, 0, 0, 0.60) !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+}
+
+.textarea {
+    /* Your existing styles */
+    border-radius: 20px !important;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: transparent;
+    padding: 15px 20px;
+    font-family: 'Poppins', sans-serif;
+    min-height: 150px;
+    
+    /* Scrollbar customization */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* For Firefox */
+}
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+.textarea::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.textarea::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 0 20px 20px 0;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* For Firefox */
+.textarea {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.input:focus, .form-select:focus, .textarea:focus {
+    border: 1px solid #000000;
+    background: transparent;
+    box-shadow: none;
+}
+
+.label {
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.submitbtn {
+    background: #000;
+    color: white;
+    border: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.submitbtn:hover {
+    background: #333;
+    transform: translateY(-2px);
+    color: white;
+}
